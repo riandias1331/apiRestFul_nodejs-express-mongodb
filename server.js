@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3333
 
-const route = require('./')
+const route = require('./route')
 app.use(route)
 
 const mongoose = require('mongoose')
