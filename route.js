@@ -4,9 +4,10 @@ const route = express.Router()
 const homeControler  = require('./src/controllers/homeControllers')
 
 
-route.get('/', homeControler.index)
-route.post('/', homeControler.crete)
-route.post('/', homeControler.update)
-route.delete('/', homeControler.deleted)
+route.get('/users', homeControler.index)
+route.post('/users', homeControler.crete)
+route.put('/users/:id', homeControler.update)
+route.delete('/users/:id', homeControler.deleted)
+
 
 module.exports = route
