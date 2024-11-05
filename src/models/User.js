@@ -13,7 +13,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  createadAt: {
+    type: Date,
+    default: Date.now // Armazena a data de criação automaticamente
+  }
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('Api_node-express-mongodb', userSchema);
 module.exports = User

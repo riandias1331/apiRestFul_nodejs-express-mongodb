@@ -5,7 +5,7 @@ const homeControler  = require('./src/controllers/homeControllers')
 
 
 route.get('/users', homeControler.index)
-route.post('/users', homeControler.crete)
+route.post('/users', homeControler.create)
 route.put('/users/:id', homeControler.update)
 route.delete('/users/:id', homeControler.deleted)
 

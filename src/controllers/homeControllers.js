@@ -10,7 +10,7 @@ exports.index = async (req, res) => {
 
 }
 
-exports.crete = async (req, res) => {
+exports.create = async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const user = new User({ name, email, password });
