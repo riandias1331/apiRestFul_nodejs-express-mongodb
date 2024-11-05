@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   },
   createadAt: {
     type: Date,
-    default: Date.now // Armazena a data de criação automaticamente
+    default: Date.now
   }
 });
 
