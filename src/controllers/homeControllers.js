@@ -1,6 +1,6 @@
 const User = require('../models/User.js')
 
-exports.index = async (req, res) => {
+exports.get = async (req, res) => {
     try {
         const users = await User.find();
         res.status(200).json(users);
@@ -10,11 +10,21 @@ exports.index = async (req, res) => {
 
 }
 
+// exports.create = async (req, res) => {
+//     try {
+//         const { name, email, password } = req.body;
+//         const user = new User({ name, email, password });
+//         await user.save();
+//         res.status(201).json(user);
+//     } catch (error) {
+//         res.status(400).json({ message: error.message });
+//     }
+// }
+
 exports.create = async (req, res) => {
     try {
         const { name, email, password } = req.body;
-        const user = new User({ name, email, password });
-        await user.save();
+        const user = await User.create({ name, email, password });
         res.status(201).json(user);
     } catch (error) {
         res.status(400).json({ message: error.message });
