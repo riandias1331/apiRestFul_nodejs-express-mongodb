@@ -1,5 +1,7 @@
 const User = require('../models/User.js')
 
+const bcrypt = require('bcrypt')
+
 exports.get = async (req, res) => {
     try {
         const users = await User.find();
@@ -24,7 +26,13 @@ exports.get = async (req, res) => {
 exports.create = async (req, res) => {
     try {
         const { name, email, password } = req.body;
-        const user = await User.create({ name, email, password });
+        const salt = await bcrypt.genSalt(10)
+        const hashPassword = await bcrypt.hash(password, salt)
+        const user = await User.create({
+            name,
+            email,
+            password: hashPassword
+        });
         res.status(201).json(user);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -56,5 +64,18 @@ exports.deleted = async (req, res) => {
     }
 }
 
+
+exports.deletedAll =  async (req, res) => {
+    try {
+        const user = await User.deleteMany();
+        if (!user) {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
+        } res.status(200).json({ message: 'Todos os produtos foram deletados.'  });
+        
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Erro ao deletar os produtos.' });
+    }
+};
 
 

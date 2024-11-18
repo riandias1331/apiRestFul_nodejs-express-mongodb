@@ -8,6 +8,8 @@ route.get('/users', homeControler.get)
 route.post('/users', homeControler.create)
 route.put('/users/:id', homeControler.update)
 route.delete('/users/:id', homeControler.deleted)
+route.delete('/users', homeControler.deletedAll)
+
 
 
 module.exports = route
