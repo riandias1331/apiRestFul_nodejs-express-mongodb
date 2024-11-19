@@ -21,4 +21,3 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('Api_node-express-mongodb', userSchema);
 module.exports = User
-
