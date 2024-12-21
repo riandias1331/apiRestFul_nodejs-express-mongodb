@@ -18,7 +18,7 @@ exports.get = async (req, res) => {
         const user = await User.findById(req.params.id);
 
         if (!user) {
-            return res.status(404).json({ message: 'Produto não encontrado' });
+            return res.status(404).json({ message: 'user not found' });
         }
 
         res.json(user);
@@ -50,7 +50,7 @@ exports.update = async (req, res) => {
         const updatedData = req.body;
         const user = await User.findByIdAndUpdate(userId, updatedData, { new: true });
         if (!user) {
-            return res.status(404).json({ message: 'Usuário não encontrado' });
+            return res.status(404).json({ message: 'user not foundo' });
         } res.status(200).json(user);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -62,8 +62,8 @@ exports.deleted = async (req, res) => {
         const userId = req.params.id;
         const user = await User.findByIdAndDelete(userId);
         if (!user) {
-            return res.status(404).json({ message: 'Usuário não encontrado' });
-        } res.status(200).json({ message: 'Usuário deletado com sucesso' });
+            return res.status(404).json({ message: 'user not found' });
+        } res.status(200).json({ message: 'User deleted successfully' });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -74,12 +74,12 @@ exports.deletedAll =  async (req, res) => {
     try {
         const user = await User.deleteMany();
         if (!user) {
-            return res.status(404).json({ message: 'Usuário não encontrado' });
-        } res.status(200).json({ message: 'Todos os produtos foram deletados.'  });
+            return res.status(404).json({ message: 'user not found' });
+        } res.status(200).json({ message: 'All users have been deleted.'  });
         
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Erro ao deletar os produtos.' });
+        res.status(500).json({ message: 'Error when deleting users.' });
     }
 };
 
